@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Manga</title>
+    <link rel="stylesheet" type="text/css" href="/static/index.css">
+</head>
+<body onload="mangaPage(JSON.stringify({{manga}}))">
+    <div class="container">
+        <ul class="navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="/CompletedManga">Completed Manga</a></li>
+        </ul>
+        <div id="manga-info"></div>
+        
+        
+        <!-- <h1>{{manga.manga_title}}</h1>
+        <p>{{manga.summary}}</p>
+        <ul>
+            <h3>Chapters</h3>
+            {% for chapter in manga.chapters %}
+            <li><a href="" >{{chapter}}</a></li>
+            {% endfor %}
+        </ul> -->
+    </div>
+    <script src="/js/script.js" defer></script>
+</body>
+</html>
