@@ -82,6 +82,9 @@ function displayMangaPages(manga) {
     let scrollviewdiv = document.createElement("div");
     scrollviewdiv.id = "scroll-view";
 
+    img.hidden = true;
+    scrollviewdiv.hidden = true;
+
     // let pageCounter = document.createElement("p");
     container.appendChild(scrollviewdiv);
 
@@ -99,8 +102,6 @@ function displayMangaPages(manga) {
         p++;
         document.getElementById("single-page").src = manga.manga_pages[p];
     };
-    img.hidden = false;
-    scrollviewdiv.hidden = true;
 }
 
 function toggle() {
