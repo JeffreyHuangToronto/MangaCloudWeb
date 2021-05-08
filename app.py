@@ -53,9 +53,7 @@ app.secret_key = 'admin'
 def completed_manga():
     url = "https://mangacloud.azurewebsites.net/api/manga/getcompletedlist?source=MangaKakalot&page=1"
     payload = {}
-    headers = {
-        'Cookie': 'ARRAffinity=245d3a60ee797bb0440fcba44d0786977f5b4ea366bcd459b9be1921a3a8ea5e; ARRAffinitySameSite=245d3a60ee797bb0440fcba44d0786977f5b4ea366bcd459b9be1921a3a8ea5e'
-    }
+    headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
     return render_template('CompletedManga.html', completed_manga=json.loads(response.text))
 
@@ -108,9 +106,7 @@ def internal_error(error):
 def root():
     url = "https://mangacloud.azurewebsites.net/api/manga/getcompletedlist?source=MangaKakalot&page=1"
     payload = {}
-    headers = {
-        'Cookie': 'ARRAffinity=245d3a60ee797bb0440fcba44d0786977f5b4ea366bcd459b9be1921a3a8ea5e; ARRAffinitySameSite=245d3a60ee797bb0440fcba44d0786977f5b4ea366bcd459b9be1921a3a8ea5e'
-    }
+    headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
     # print(json.loads(response.text)[0])
     return render_template('index.html')
@@ -122,4 +118,4 @@ def root():
 
 # run the app when app.py is run
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5000)

@@ -7,11 +7,11 @@ function createManga(completed_manga) {
     for (manga in c_manga) {
         var img = document.createElement("img");
         var div = document.createElement("div");
-        var title = document.createElement("h2");
+        var title = document.createElement("a");
 
         img.src = `https://mangakakalot.tv/mangaimage/${c_manga[manga]._id}.jpg`;
-        img.width = 200;
-        img.height = 300;
+        // img.width = 200;
+        // img.height = 300;
 
         title.innerHTML = c_manga[manga].manga_title;
         title.className = "title";
@@ -19,9 +19,9 @@ function createManga(completed_manga) {
         div.className = "manga";
 
         img.id = manga;
-        title.id = manga;
+        title.href = `/manga/${c_manga[manga]._id}`;
         div.id = manga;
-        div.onclick = (elem) => {
+        img.onclick = (elem) => {
             location.href = `/manga/${c_manga[elem.target.id]._id}`;
         };
         div.appendChild(img);
@@ -42,8 +42,6 @@ function mangaPage(manga) {
     let ul = document.createElement("ul");
 
     img.src = `https://mangakakalot.tv/mangaimage/${manga._id}.jpg`;
-    img.width = 200;
-    img.height = 300;
 
     title.innerHTML = manga.manga_title;
     title.className = "title";
@@ -62,15 +60,6 @@ function mangaPage(manga) {
         ul.appendChild(li);
     }
 
-    // <h1>{{manga.manga_title}}</h1>
-    //     <p>{{manga.summary}}</p>
-    //     <ul>
-    //         <h3>Chapters</h3>
-    //         {% for chapter in manga.chapters %}
-    //         <li><a href="" >{{chapter}}</a></li>
-    //         {% endfor %}
-    //     </ul>
-
     img.id = manga._id;
     title.id = manga._id;
     div.id = manga._id;
@@ -82,14 +71,46 @@ function mangaPage(manga) {
     container.appendChild(div);
 }
 
+let p = 0;
 function displayMangaPages(manga) {
+    p = 0;
     manga = JSON.parse(manga);
     console.log(manga.manga_pages);
-    let container = document.getElementById("manga-pages");
+    // let container = document.getElementById("manga-pages");
+    let container = document.getElementById("container");
+    let img = document.getElementById("single-page");
+    let scrollviewdiv = document.createElement("div");
+    scrollviewdiv.id = "scroll-view";
 
+    // let pageCounter = document.createElement("p");
+    container.appendChild(scrollviewdiv);
+
+    // Scroll View
     for (page_url in manga.manga_pages) {
         let img = document.createElement("img");
         img.src = manga.manga_pages[page_url];
-        container.appendChild(img);
+        scrollviewdiv.appendChild(img);
     }
+
+    // Single View
+    img.src = manga.manga_pages[0];
+    img.onclick = () => {
+        console.log("click");
+        p++;
+        document.getElementById("single-page").src = manga.manga_pages[p];
+    };
+    img.hidden = false;
+    scrollviewdiv.hidden = true;
 }
+
+function toggle() {
+    let singleView = document.getElementById("single-page");
+    let scrollView = document.getElementById("scroll-view");
+
+    singleView.hidden = !singleView.hidden;
+    scrollView.hidden = !scrollView.hidden;
+    console.log(singleView.hidden, scrollView.hidden);
+}
+// function toggleView(){
+//     let button =
+// }
