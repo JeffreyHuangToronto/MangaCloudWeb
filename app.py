@@ -68,9 +68,9 @@ def js(script_name):
 def manga(manga_id):
 
     # here we want to get the value of user (i.e. ?user=some-value)
-    page = request.args.get('page')
+    chapter = request.args.get('chapter')
     # print(page)
-    if page is None:
+    if chapter is None:
         url = "https://mangacloud.azurewebsites.net/api/manga/database/searchbyid?manga_id=" + manga_id
         payload = {}
         headers = {}
@@ -81,7 +81,7 @@ def manga(manga_id):
         return render_template('Manga.html', manga=json.loads(response.text))
 
     url = "https://mangacloud.azurewebsites.net/api/manga/getpages?manga_id=" + \
-        manga_id + "&chapter_number=" + page
+        manga_id + "&chapter_number=" + chapter
 
     payload = {}
     headers = {}

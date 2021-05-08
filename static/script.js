@@ -16,7 +16,7 @@ function createManga(completed_manga) {
         title.innerHTML = c_manga[manga].manga_title;
         title.className = "title";
 
-        div.className = "manga";
+        div.className = "manga-thumbnail";
 
         img.id = manga;
         title.href = `/manga/${c_manga[manga]._id}`;
@@ -54,7 +54,7 @@ function mangaPage(manga) {
         let li = document.createElement("li");
         let a = document.createElement("a");
 
-        a.href = "?page=" + chapter;
+        a.href = "?chapter=" + chapter;
         a.text = chapter;
         li.appendChild(a);
         ul.appendChild(li);
