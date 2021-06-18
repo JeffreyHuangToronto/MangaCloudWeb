@@ -92,26 +92,24 @@ function displayMangaPages(manga) {
     for (page_url in manga.manga_pages) {
         let img = document.createElement("img");
         img.src = manga.manga_pages[page_url];
+        console.log("Dimensions: ", img.width, img.height);
         scrollviewdiv.appendChild(img);
     }
 
     // Single View
-    img.src = manga.manga_pages[0];
-    img.onclick = () => {
-        console.log("click");
-        p++;
-        document.getElementById("single-page").src = manga.manga_pages[p];
-    };
+    // img.src = manga.manga_pages[0];
+    // img.onclick = () => {
+    //     console.log("click");
+    //     p++;
+    //     document.getElementById("single-page").src = manga.manga_pages[p];
+    // };
 }
 
-function toggle() {
-    let singleView = document.getElementById("single-page");
-    let scrollView = document.getElementById("scroll-view");
+// function toggle() {
+//     let singleView = document.getElementById("single-page");
+//     let scrollView = document.getElementById("scroll-view");
 
-    singleView.hidden = !singleView.hidden;
-    scrollView.hidden = !scrollView.hidden;
-    console.log(singleView.hidden, scrollView.hidden);
-}
-// function toggleView(){
-//     let button =
+//     singleView.hidden = !singleView.hidden;
+//     scrollView.hidden = !scrollView.hidden;
+//     console.log(singleView.hidden, scrollView.hidden);
 // }
