@@ -7,8 +7,10 @@ function createManga(completed_manga) {
     for (manga in c_manga) {
         var img = document.createElement("img");
         var div = document.createElement("div");
+        var manga_div = document.createElement("div");
         var title = document.createElement("a");
 
+        manga_div.className = "manga-div";
         img.src = `https://mangakakalot.tv/mangaimage/${c_manga[manga]._id}.jpg`;
         // img.width = 200;
         // img.height = 300;
@@ -24,9 +26,10 @@ function createManga(completed_manga) {
         img.onclick = (elem) => {
             location.href = `/manga/${c_manga[elem.target.id]._id}`;
         };
+        manga_div.appendChild(div);
         div.appendChild(img);
-        div.appendChild(title);
-        container.appendChild(div);
+        manga_div.appendChild(title);
+        container.appendChild(manga_div);
     }
 }
 
